@@ -1,0 +1,4 @@
+// vscode에서 자동으로 import 하는 모듈들은 .js 확장자와 함께 import 됨
+{
+  "javascript.preferences.importModuleSpecifierEnding": "js"
+}
