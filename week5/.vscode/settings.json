@@ -1,3 +1,4 @@
 {
-  "javascript.preferences.importModuleSpecifierEnding": "js"
+  "js/ts.preferences.importModuleSpecifierEnding": "js",
+  "ts/ts.preferences.importModuleSpecifierEnding": "ts",
 }

@@ -40,9 +40,9 @@ export const responseFromUser = ({
     birth: user.birth,
     address: user.address,
     phoneNumber: user.phone_number,
-    preferences: preferences.map((preference) => ({
-      id: preference.food_category_id,
-      name: preference.name,
-    })),
+    preferences: preferences.map((p) => ({
+      id: p.food_id,
+      name: p.name,
+    }))
   };
 };
