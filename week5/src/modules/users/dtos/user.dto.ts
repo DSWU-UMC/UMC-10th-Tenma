@@ -6,6 +6,7 @@ export interface UserSignUpRequest {
   birth: Date;
   address?: string;       // ?가 붙으면 '없을 수도 있음(선택)'이라는 뜻이에요!
   phoneNumber: string;
+  password: string;
   preferences: number[];
 }
 
@@ -20,6 +21,7 @@ export const bodyToUser = (body: UserSignUpRequest) => {
     birth, // 필수
     address: body.address || "", //선택 
     phoneNumber: body.phoneNumber,//필수
+    password: body.password, // 필수
     preferences: body.preferences,// 필수 
   };
 };

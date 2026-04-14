@@ -42,24 +42,22 @@ export const addUser = async (data: any): Promise<number | null> => {
 
     const [result] = await conn.query<ResultSetHeader>(
       `
-      INSERT INTO users
-        (email, name, gender, birth_date, address, phone_num)
-      VALUES
-        (?, ?, ?, ?, ?, ?);
+      INSERT INTO users 
+      (email, name, gender, birth_date, address, phone_num, password_hash)
+      VALUES (?, ?, ?, ?, ?, ?, ?)
       `,
       [
         data.email,
         data.name,
         data.gender,
         data.birth,
-        data.address ?? "",
+        data.address,
         data.phoneNumber,
+        data.password,   // 해싱된 비밀번호 저장
       ]
     );
 
     return result.insertId;
-  } catch (err) {
-    throw new Error(`오류가 발생했어요: ${err}`);
   } finally {
     conn.release();
   }
