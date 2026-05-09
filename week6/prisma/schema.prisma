@@ -1,0 +1,128 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+
+model User {
+  id            Int      @id @default(autoincrement())
+  email         String   @unique(map: "email") @db.VarChar(255)
+  name          String   @db.VarChar(100)
+  gender        String   @db.VarChar(15)
+  birth         DateTime @db.Date
+  address       String   @db.VarChar(255)
+  phoneNumber   String   @map("phone_number") @db.VarChar(15)
+
+  password      String   @db.VarChar(255)
+  userFoods UserFood[]
+  userMissions UserMission[]
+  reviews   Review[]
+
+  @@map("users")
+}
+
+model Food {
+  id   Int    @id @default(autoincrement())
+  name String @db.VarChar(100)
+
+  userFoods UserFood[]
+
+  @@map("foods")
+}
+
+model UserFood {
+  id     Int @id @default(autoincrement())
+  userId Int @map("user_id")
+  foodId Int @map("food_id")
+
+  user User @relation(fields: [userId], references: [id])
+  food Food @relation(fields: [foodId], references: [id])
+
+  @@map("user_foods")
+}
+
+model Category {
+  id    Int     @id @default(autoincrement())
+  name  String  @db.VarChar(100)
+
+  stores Store[]
+
+  @@map("categories")
+}
+
+model Region {
+  id    Int     @id @default(autoincrement())
+  name  String  @db.VarChar(100)
+
+  stores Store[]
+
+  @@map("regions")
+}
+
+model Store {
+
+  id         Int    @id @default(autoincrement())
+  categoryId Int    @map("category_id")
+  regionId   Int    @map("region_id")
+  name       String @db.VarChar(100)
+  address    String @db.VarChar(255)
+  masterNum  Int    @map("master_num")
+
+  category Category @relation(fields: [categoryId], references: [id])
+  region   Region   @relation(fields: [regionId], references: [id])
+  missions Mission[]
+  reviews Review[]
+
+  @@map("stores")
+
+}
+
+model Review {
+
+  id      Int    @id @default(autoincrement())
+  storeId Int    @map("store_id")
+  userId  Int    @map("user_id")
+  star    Int
+  content String @db.Text
+  createdAt DateTime @default(now())
+
+  store Store @relation(fields: [storeId], references: [id])
+  user  User  @relation(fields: [userId], references: [id])
+
+  @@map("reviews")
+
+}
+
+model Mission {
+  id        Int      @id @default(autoincrement())
+  storeId   Int      @map("store_id")
+  deadline  DateTime
+  condition String
+  point     Int
+
+  store        Store         @relation(fields: [storeId], references: [id])
+  userMissions UserMission[]
+
+  @@map("missions")
+}
+
+model UserMission {
+  id        Int     @id @default(autoincrement())
+  userId    Int     @map("user_id")
+  missionId Int     @map("mission_id")
+  completed Boolean @default(false)
+
+  user    User    @relation(fields: [userId], references: [id])
+  mission Mission @relation(fields: [missionId], references: [id])
+
+  @@map("user_missions")
+}
