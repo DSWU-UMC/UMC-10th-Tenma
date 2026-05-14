@@ -20,6 +20,7 @@
     "forceConsistentCasingInFileNames": true, 
     "sourceMap": true,
     "types": ["node"],
+    "typeRoots": ["./node_modules/@types", "./src/types"],
 
     // 데코레이터 문법 사용 여부
     "experimentalDecorators": true,

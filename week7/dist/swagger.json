@@ -1,0 +1,1021 @@
+{
+	"openapi": "3.0.0",
+	"components": {
+		"examples": {},
+		"headers": {},
+		"parameters": {},
+		"requestBodies": {},
+		"responses": {},
+		"schemas": {
+			"UserSignUpResponse": {
+				"properties": {
+					"userId": {
+						"type": "number",
+						"format": "double"
+					},
+					"preferCategory": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"userId",
+					"preferCategory"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ApiResponse_UserSignUpResponse_": {
+				"properties": {
+					"resultType": {
+						"type": "string",
+						"enum": [
+							"SUCCESS"
+						],
+						"nullable": false
+					},
+					"error": {
+						"type": "number",
+						"enum": [
+							null
+						],
+						"nullable": true
+					},
+					"data": {
+						"$ref": "#/components/schemas/UserSignUpResponse"
+					}
+				},
+				"required": [
+					"resultType",
+					"error",
+					"data"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"UserSignUpRequest": {
+				"properties": {
+					"email": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"gender": {
+						"type": "string"
+					},
+					"birth": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"address": {
+						"type": "string"
+					},
+					"phoneNumber": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					},
+					"preferences": {
+						"items": {
+							"type": "number",
+							"format": "double"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"email",
+					"name",
+					"gender",
+					"birth",
+					"phoneNumber",
+					"password",
+					"preferences"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ApiResponse__storeId-number__": {
+				"properties": {
+					"resultType": {
+						"type": "string",
+						"enum": [
+							"SUCCESS"
+						],
+						"nullable": false
+					},
+					"error": {
+						"type": "number",
+						"enum": [
+							null
+						],
+						"nullable": true
+					},
+					"data": {
+						"properties": {
+							"storeId": {
+								"type": "number",
+								"format": "double"
+							}
+						},
+						"required": [
+							"storeId"
+						],
+						"type": "object"
+					}
+				},
+				"required": [
+					"resultType",
+					"error",
+					"data"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"CreateStoreRequest": {
+				"properties": {
+					"categoryId": {
+						"type": "number",
+						"format": "double"
+					},
+					"regionId": {
+						"type": "number",
+						"format": "double"
+					},
+					"name": {
+						"type": "string"
+					},
+					"address": {
+						"type": "string"
+					},
+					"masterNum": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"categoryId",
+					"regionId",
+					"name",
+					"address",
+					"masterNum"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ReviewItem": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"userName": {
+						"type": "string"
+					},
+					"star": {
+						"type": "number",
+						"format": "double"
+					},
+					"content": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"id",
+					"userName",
+					"star",
+					"content"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ReviewListResponse": {
+				"properties": {
+					"data": {
+						"items": {
+							"$ref": "#/components/schemas/ReviewItem"
+						},
+						"type": "array"
+					},
+					"pagination": {
+						"properties": {
+							"cursor": {
+								"type": "number",
+								"format": "double",
+								"nullable": true
+							}
+						},
+						"required": [
+							"cursor"
+						],
+						"type": "object"
+					}
+				},
+				"required": [
+					"data",
+					"pagination"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ApiResponse_ReviewListResponse_": {
+				"properties": {
+					"resultType": {
+						"type": "string",
+						"enum": [
+							"SUCCESS"
+						],
+						"nullable": false
+					},
+					"error": {
+						"type": "number",
+						"enum": [
+							null
+						],
+						"nullable": true
+					},
+					"data": {
+						"$ref": "#/components/schemas/ReviewListResponse"
+					}
+				},
+				"required": [
+					"resultType",
+					"error",
+					"data"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ApiResponse__reviewId-number__": {
+				"properties": {
+					"resultType": {
+						"type": "string",
+						"enum": [
+							"SUCCESS"
+						],
+						"nullable": false
+					},
+					"error": {
+						"type": "number",
+						"enum": [
+							null
+						],
+						"nullable": true
+					},
+					"data": {
+						"properties": {
+							"reviewId": {
+								"type": "number",
+								"format": "double"
+							}
+						},
+						"required": [
+							"reviewId"
+						],
+						"type": "object"
+					}
+				},
+				"required": [
+					"resultType",
+					"error",
+					"data"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"CreateReviewRequest": {
+				"properties": {
+					"userId": {
+						"type": "number",
+						"format": "double"
+					},
+					"storeId": {
+						"type": "number",
+						"format": "double"
+					},
+					"star": {
+						"type": "number",
+						"format": "double"
+					},
+					"content": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"userId",
+					"storeId",
+					"star",
+					"content"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ApiResponse_any_": {
+				"properties": {
+					"resultType": {
+						"type": "string",
+						"enum": [
+							"SUCCESS"
+						],
+						"nullable": false
+					},
+					"error": {
+						"type": "number",
+						"enum": [
+							null
+						],
+						"nullable": true
+					},
+					"data": {}
+				},
+				"required": [
+					"resultType",
+					"error",
+					"data"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ApiResponse__missionId-number__": {
+				"properties": {
+					"resultType": {
+						"type": "string",
+						"enum": [
+							"SUCCESS"
+						],
+						"nullable": false
+					},
+					"error": {
+						"type": "number",
+						"enum": [
+							null
+						],
+						"nullable": true
+					},
+					"data": {
+						"properties": {
+							"missionId": {
+								"type": "number",
+								"format": "double"
+							}
+						},
+						"required": [
+							"missionId"
+						],
+						"type": "object"
+					}
+				},
+				"required": [
+					"resultType",
+					"error",
+					"data"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"CreateMissionRequest": {
+				"properties": {
+					"storeId": {
+						"type": "number",
+						"format": "double"
+					},
+					"deadline": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"condition": {
+						"type": "string"
+					},
+					"point": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"storeId",
+					"deadline",
+					"condition",
+					"point"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ApiResponse__userMissionId-number__": {
+				"properties": {
+					"resultType": {
+						"type": "string",
+						"enum": [
+							"SUCCESS"
+						],
+						"nullable": false
+					},
+					"error": {
+						"type": "number",
+						"enum": [
+							null
+						],
+						"nullable": true
+					},
+					"data": {
+						"properties": {
+							"userMissionId": {
+								"type": "number",
+								"format": "double"
+							}
+						},
+						"required": [
+							"userMissionId"
+						],
+						"type": "object"
+					}
+				},
+				"required": [
+					"resultType",
+					"error",
+					"data"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ChallengeMissionRequest": {
+				"properties": {
+					"missionId": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"missionId"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ApiResponse__userMissionId-number--completed-boolean__": {
+				"properties": {
+					"resultType": {
+						"type": "string",
+						"enum": [
+							"SUCCESS"
+						],
+						"nullable": false
+					},
+					"error": {
+						"type": "number",
+						"enum": [
+							null
+						],
+						"nullable": true
+					},
+					"data": {
+						"properties": {
+							"completed": {
+								"type": "boolean"
+							},
+							"userMissionId": {
+								"type": "number",
+								"format": "double"
+							}
+						},
+						"required": [
+							"completed",
+							"userMissionId"
+						],
+						"type": "object"
+					}
+				},
+				"required": [
+					"resultType",
+					"error",
+					"data"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"OngoingMissionItem": {
+				"properties": {
+					"userMissionId": {
+						"type": "number",
+						"format": "double"
+					},
+					"point": {
+						"type": "number",
+						"format": "double"
+					},
+					"storeName": {
+						"type": "string"
+					},
+					"condition": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"userMissionId",
+					"point",
+					"storeName",
+					"condition"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"OngoingMissionListResponse": {
+				"properties": {
+					"data": {
+						"items": {
+							"$ref": "#/components/schemas/OngoingMissionItem"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"data"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ApiResponse_OngoingMissionListResponse_": {
+				"properties": {
+					"resultType": {
+						"type": "string",
+						"enum": [
+							"SUCCESS"
+						],
+						"nullable": false
+					},
+					"error": {
+						"type": "number",
+						"enum": [
+							null
+						],
+						"nullable": true
+					},
+					"data": {
+						"$ref": "#/components/schemas/OngoingMissionListResponse"
+					}
+				},
+				"required": [
+					"resultType",
+					"error",
+					"data"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"StoreMissionItem": {
+				"properties": {
+					"missionId": {
+						"type": "number",
+						"format": "double"
+					},
+					"storeName": {
+						"type": "string"
+					},
+					"storeCategory": {
+						"type": "string"
+					},
+					"condition": {
+						"type": "string"
+					},
+					"point": {
+						"type": "number",
+						"format": "double"
+					},
+					"deadline": {
+						"type": "string",
+						"format": "date-time"
+					}
+				},
+				"required": [
+					"missionId",
+					"storeName",
+					"storeCategory",
+					"condition",
+					"point",
+					"deadline"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"StoreMissionListResponse": {
+				"properties": {
+					"data": {
+						"items": {
+							"$ref": "#/components/schemas/StoreMissionItem"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"data"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ApiResponse_StoreMissionListResponse_": {
+				"properties": {
+					"resultType": {
+						"type": "string",
+						"enum": [
+							"SUCCESS"
+						],
+						"nullable": false
+					},
+					"error": {
+						"type": "number",
+						"enum": [
+							null
+						],
+						"nullable": true
+					},
+					"data": {
+						"$ref": "#/components/schemas/StoreMissionListResponse"
+					}
+				},
+				"required": [
+					"resultType",
+					"error",
+					"data"
+				],
+				"type": "object",
+				"additionalProperties": false
+			}
+		},
+		"securitySchemes": {}
+	},
+	"info": {
+		"title": "playground-umc-7th-nodejs",
+		"version": "1.0.0",
+		"description": "UMC 테스트 프로젝트",
+		"license": {
+			"name": "ISC"
+		},
+		"contact": {}
+	},
+	"paths": {
+		"/users/signup": {
+			"post": {
+				"operationId": "HandleUserSignUp",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiResponse_UserSignUpResponse_"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Users"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UserSignUpRequest"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/stores": {
+			"post": {
+				"operationId": "CreateStore",
+				"responses": {
+					"201": {
+						"description": "Created",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiResponse__storeId-number__"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Store"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CreateStoreRequest"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/stores/{storeId}/reviews": {
+			"get": {
+				"operationId": "ListStoreReviews",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiResponse_ReviewListResponse_"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Store"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "storeId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "cursor",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/reviews": {
+			"post": {
+				"operationId": "CreateReview",
+				"responses": {
+					"201": {
+						"description": "Created",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiResponse__reviewId-number__"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Review"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CreateReviewRequest"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/reviews/users/{userId}": {
+			"get": {
+				"operationId": "ListMyReviews",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiResponse_any_"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Review"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "userId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "cursor",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/missions": {
+			"post": {
+				"operationId": "CreateMission",
+				"responses": {
+					"201": {
+						"description": "미션 생성 성공",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiResponse__missionId-number__"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Mission"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CreateMissionRequest"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/missions/challenge/{userId}": {
+			"post": {
+				"operationId": "ChallengeMission",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiResponse__userMissionId-number__"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Mission"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "userId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/ChallengeMissionRequest"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/missions/complete/{userId}/{userMissionId}": {
+			"post": {
+				"operationId": "CompleteMission",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiResponse__userMissionId-number--completed-boolean__"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Mission"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "userId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "path",
+						"name": "userMissionId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/missions/ongoing/{userId}": {
+			"get": {
+				"operationId": "ListOngoingMissions",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiResponse_OngoingMissionListResponse_"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Mission"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "userId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/missions/store/{storeId}": {
+			"get": {
+				"operationId": "ListStoreMissions",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiResponse_StoreMissionListResponse_"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Mission"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "storeId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		}
+	},
+	"servers": [
+		{
+			"url": "/"
+		}
+	]
+}
