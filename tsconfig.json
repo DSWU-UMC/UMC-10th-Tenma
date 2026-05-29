@@ -25,6 +25,6 @@
     // 데코레이터 문법 사용 여부
     "experimentalDecorators": true,
   },
-  "include": ["**/*.ts"],        
-  "exclude": ["node_modules", "dist"] // 빌드 결과물(dist)도 검사에서 제외하는 게 좋아요!
+  "include": ["src/**/*.ts"],        
+  "exclude": ["node_modules", "dist", "week3", "week4", "week5", "week6", "week7", "week8", "week9"] // 빌드 결과물(dist)도 검사에서 제외하는 게 좋아요!
 }
