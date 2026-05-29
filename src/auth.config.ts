@@ -52,7 +52,7 @@ export const googleStrategy = new GoogleStrategy(
   {
     clientID: process.env.PASSPORT_GOOGLE_CLIENT_ID!,
     clientSecret: process.env.PASSPORT_GOOGLE_CLIENT_SECRET!,
-    callbackURL: "http://3-36-170-231.nip.io:3000/oauth2/login/google",
+    callbackURL: "http://3-36-170-231.nip.io:3000/oauth2/callback/google",
     scope: ["email", "profile"],
   },
   async (_accessToken, _refreshToken, profile, cb) => {
