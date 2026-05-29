@@ -5,7 +5,8 @@
   "description": "UMC 테스트 프로젝트",
   "main": "index.js",
   "scripts": {
-    "start": "tsoa spec-and-routes && tsx src/index.ts",
+    "start": "node dist/index.js",
+    "build": "npx prisma generate && tsc",
     "dev": "tsoa spec-and-routes && nodemon --exec tsx src/index.ts"
   },
   "author": "",
